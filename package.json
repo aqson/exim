@@ -1,6 +1,6 @@
 {
   "name": "exim",
-  "version": "0.10.1",
+  "version": "0.11.0",
   "description": "An architecture for HTML5 apps using Facebook's Flux.js library",
   "main": "./lib",
   "scripts": {
@@ -9,6 +9,9 @@
     "watch": "watchify src/ -o exim.js",
     "2es5": "node build.js && babel --optional runtime --stage 1 ./src --out-dir ./lib",
     "test": "eslint src && mocha --compilers js:babel-core/register"
+  },
+  "peerDependencies": {
+    "react-dom": "^16.0.0"
   },
   "devDependencies": {
     "babel": "^6.3.13",
