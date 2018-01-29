@@ -27,6 +27,7 @@ const globalOrRequire = (glob, mod) => {
 
 const ReactRouter = globalOrRequire('ReactRouter', 'react-router');
 const React = globalOrRequire('React', 'react');
+const ReactDOM = React.DOM || globalOrRequire('ReactDOM', 'react-dom');
 
 export const getRouter = function() {
   const Router = {};
@@ -118,17 +119,17 @@ const getDOM = function() {
       } else {
         attributes = {};
       }
-      return React.DOM[name].apply(React.DOM, [attributes].concat(args));
+      return ReactDOM[name].apply(ReactDOM, [attributes].concat(args));
     };
 
     const bindTag = function(tagName) {
       return DOMHelpers[tagName] = tag.bind(this, tagName);
     };
 
-    Object.keys(React.DOM).forEach(bindTag);
+    Object.keys(ReactDOM).forEach(bindTag);
 
     DOMHelpers.space = function() {
-      return React.DOM.span({
+      return ReactDOM.span({
         dangerouslySetInnerHTML: {
           __html: '&nbsp;'
         }
